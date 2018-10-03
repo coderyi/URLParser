@@ -11,10 +11,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#if __cplusplus > 199711L
-#define register // Deprecated in C++11
-#endif
-
 namespace http {
     struct url {
         std::string protocol, user, password, host, path, search;
@@ -94,7 +90,11 @@ namespace http {
         char const *in_str = str_source.c_str();
         int in_str_len = strlen(in_str);
         std::string out_str;
+#if __cplusplus > 199711L
+        unsigned char c;
+#else
         register unsigned char c;
+#endif
         unsigned char *to, *start;
         unsigned char const *from, *end;
         unsigned char hexchars[] = "0123456789ABCDEF";
