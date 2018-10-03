@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <stdlib.h>
 
 namespace http {
