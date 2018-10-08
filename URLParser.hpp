@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <stdlib.h>
 
 namespace http {
@@ -88,9 +89,12 @@ namespace http {
     {
         char const *in_str = str_source.c_str();
         int in_str_len = strlen(in_str);
-        int out_str_len = 0;
         std::string out_str;
+#if __cplusplus > 199711L
+        unsigned char c;
+#else
         register unsigned char c;
+#endif
         unsigned char *to, *start;
         unsigned char const *from, *end;
         unsigned char hexchars[] = "0123456789ABCDEF";
@@ -120,7 +124,6 @@ namespace http {
         }
         *to = 0;
         
-        out_str_len = to - start;
         out_str = (char *)start;
         free(start);
         return out_str;
@@ -148,7 +151,6 @@ namespace http {
     {
         char const *in_str = str_source.c_str();
         int in_str_len = strlen(in_str);
-        int out_str_len = 0;
         std::string out_str;
         char *str;
         
@@ -174,7 +176,6 @@ namespace http {
             dest++;
         }
         *dest = '\0';
-        out_str_len = dest - str;
         out_str = str;
         free(str);
         return out_str;
