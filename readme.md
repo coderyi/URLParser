@@ -5,7 +5,7 @@
 
 ```
     std::string tempURL = "http://user:password@www.google.com:80/path?search";
-    http::url parsed = http::ParseHTTPURL(tempURL);
+    urlhelper::url parsed = urlhelper::ParseHTTPURL(tempURL);
     std::cout << "1 " << parsed.protocol << "\n"
               << "2 " << parsed.user << "\n"
               << "3 " << parsed.password << "\n"
@@ -14,7 +14,7 @@
               << "6 " << parsed.path << "\n"
               << "7 " << parsed.search << std::endl;
     
-    std::cout << http::URLEncode(tempURL) << "\n";
-    std::cout << http::URLDecode(http::URLEncode(tempURL)) << "\n";
+    std::cout << urlhelper::URLEncode(tempURL) << "\n";
+    std::cout << urlhelper::URLDecode(urlhelper::URLEncode(tempURL)) << "\n";
 
 ```

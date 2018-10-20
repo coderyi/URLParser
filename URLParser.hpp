@@ -11,7 +11,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-namespace http {
+namespace urlhelper {
     struct url {
         std::string protocol, user, password, host, path, search;
         int port;
